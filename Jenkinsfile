@@ -1,4 +1,5 @@
-node {
+node ('jenkins-slave')
+{
     def app
 
     stage('Clone repository') {
@@ -10,7 +11,7 @@ node {
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("anandr72/nodeapp")
+        app = docker.build("meshuaib/nodeapp")
     }
 
     stage('Test image') {
@@ -24,7 +25,7 @@ node {
         /* 
 			You would need to first register with DockerHub before you can push images to your account
 		*/
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
             } 
