@@ -11,7 +11,7 @@ node ('jenkins-slave')
     stage('Build image') {
         /* This builds the actual image */
 
-        app = docker.build("meshuaib/nodeapp")
+        app = docker.build('meshuaib/nodeapp')
     }
 
     stage('Test image') {
