@@ -1,4 +1,4 @@
-node 
+node (docker-agent-1)
 {
     def app
 
